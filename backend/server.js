@@ -28,6 +28,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root route (for testing server is alive)
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 // Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/orders", orderRoutes);

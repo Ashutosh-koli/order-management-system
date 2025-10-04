@@ -8,7 +8,6 @@ if (typeof window !== "undefined") {
     const storedUser = localStorage.getItem("user");
     storedToken = localStorage.getItem("token");
 
-    // ✅ Handle invalid or "undefined" strings safely
     if (storedUser && storedUser !== "undefined" && storedUser !== "null") {
       parsedUser = JSON.parse(storedUser);
     }

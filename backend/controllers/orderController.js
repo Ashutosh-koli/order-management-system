@@ -1,6 +1,5 @@
 import Order from "../models/Order.js";
 
-// Create order
 export const createOrder = async (req, res) => {
   try {
     const { customerName, email, contactNumber, shippingAddress, productName, quantity } = req.body;
@@ -16,7 +15,6 @@ export const createOrder = async (req, res) => {
       productImage
     });
 
-    // Emit real-time update
     req.io.emit("newOrder", order);
 
     res.status(201).json(order);
@@ -25,7 +23,6 @@ export const createOrder = async (req, res) => {
   }
 };
 
-// Get all orders
 export const getOrders = async (req, res) => {
   const { productName, startDate, endDate } = req.query;
   let filter = {};
@@ -39,14 +36,12 @@ export const getOrders = async (req, res) => {
   res.json(orders);
 };
 
-// Get single order
 export const getOrderById = async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) res.json(order);
   else res.status(404).json({ message: "Order not found" });
 };
 
-// Update order quantity
 export const updateOrder = async (req, res) => {
   const order = await Order.findById(req.params.id);
 
@@ -59,7 +54,6 @@ export const updateOrder = async (req, res) => {
   }
 };
 
-// Delete order
 export const deleteOrder = async (req, res) => {
   const order = await Order.findById(req.params.id);
 

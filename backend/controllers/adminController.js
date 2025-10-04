@@ -1,12 +1,10 @@
 import Admin from "../models/Admin.js";
 import jwt from "jsonwebtoken";
 
-// Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 };
 
-// Register Admin
 export const registerAdmin = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -26,12 +24,11 @@ export const registerAdmin = async (req, res) => {
   }
 };
 
-// Login Admin
 export const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const admin = await Admin.findOne({ email }); // must be a Mongoose doc
+    const admin = await Admin.findOne({ email }); 
 
     if (admin && (await admin.matchPassword(password))) {
       res.json({

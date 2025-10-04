@@ -32,7 +32,7 @@ const upload = multer({
   },
 });
 
-router.post("/", upload.single("productImage"), createOrder);
+router.post("/", createOrder);
 router.get("/", protect, getOrders);
 router.get("/:id", protect, getOrderById);
 router.put("/:id", protect, updateOrder);

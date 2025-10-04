@@ -51,8 +51,9 @@ export default function CheckoutPage() {
     };
 
     try {
-      // Adjust endpoint based on your backend route
-      await axios.post("http://localhost:5000/api/orders/createOrder", orderData);
+ 
+      await axios.post("http://localhost:5000/api/orders", orderData);
+
       toast.success("Order placed successfully!");
       dispatch(clearCart());
       setTimeout(() => router.push("/products"), 2000);
@@ -72,7 +73,6 @@ export default function CheckoutPage() {
         <p className="text-center text-gray-600 text-lg">Your cart is empty.</p>
       ) : (
         <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-          {/* 🧍 Customer Details Form */}
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">
             Customer Information
           </h2>
@@ -111,7 +111,6 @@ export default function CheckoutPage() {
             />
           </div>
 
-          {/* 🛒 Cart Items */}
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">
             Order Summary
           </h2>
@@ -143,12 +142,10 @@ export default function CheckoutPage() {
             ))}
           </div>
 
-          {/* 💰 Total */}
           <h2 className="text-2xl font-bold text-right mt-6">
             Total: ₹{total.toFixed(2)}
           </h2>
 
-          {/* ✅ Checkout Button */}
           <div className="text-center mt-8">
             <button
               onClick={handleCheckout}

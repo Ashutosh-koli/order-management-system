@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema(
     shippingAddress: { type: String, required: true, maxlength: 100 },
     productName: { type: String, required: true, minlength: 3, maxlength: 50 },
     quantity: { type: Number, required: true, min: 1, max: 100 },
-    productImage: { type: String } // filename of uploaded image
+    productImage: { type: String }
   },
   { timestamps: true }
 );

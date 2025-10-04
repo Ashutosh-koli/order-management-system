@@ -52,7 +52,7 @@ export default function CheckoutPage() {
 
     try {
       // Adjust endpoint based on your backend route
-      await axios.post("http://localhost:5000/api/admin/create-order", orderData);
+      await axios.post("http://localhost:5000/api/orders/createOrder", orderData);
       toast.success("Order placed successfully!");
       dispatch(clearCart());
       setTimeout(() => router.push("/products"), 2000);
